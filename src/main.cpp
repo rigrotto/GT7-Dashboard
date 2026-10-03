@@ -9,9 +9,11 @@ WiFiManager wifiManager;
 
 void setup() {
   Serial.begin(115200);
-  gt7.begin();
+
   wifiManager.begin();
-  delay(1000);
+  gt7.begin();
+
+  delay(1000);  
 
   Serial.println("GT7 Dashboard starting...");
 }
