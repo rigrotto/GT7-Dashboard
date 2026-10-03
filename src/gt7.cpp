@@ -35,6 +35,15 @@ void GT7Receiver::update() {
         sendHeartbeat();
         lastHeartbeat = now;
     }
+
+    int packetSize = udp.parsePacket();
+
+    if (packetSize > 0) {
+        Serial.print("GT7 UDP packet received: ");
+        Serial.print(packetSize);
+        Serial.println(" bytes");
+    }
+
 }
 
 const GT7Telemetry& GT7Receiver::getTelemetry() const {
