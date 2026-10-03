@@ -2,13 +2,21 @@
 #include <WiFi.h>
 
 #include "wifi_manager.h"
+#include "secrets.h"
 
 void WiFiManager::begin() {
     WiFi.mode(WIFI_STA);
+
+    Serial.print("Connecting to Wi-Fi: ");
+    Serial.println(WIFI_SSID);
+
+    WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 }
 
 void WiFiManager::update() {
-    // Wi-Fi connection handling will go here later.
+    if (WiFi.status() == WL_CONNECTED) {
+        return;
+    }
 }
 
 bool WiFiManager::isConnected() const {
